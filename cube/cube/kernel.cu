@@ -5,10 +5,13 @@
 
 __global__ void cube(float * d_out, float * d_in) {
 	// Todo: Fill in this function
+	int threadId = threadIdx.x;
+	float val = d_in[threadId];
+	d_out[threadId] = val * val * val;
 }
 
 int main(int argc, char ** argv) {
-	const int ARRAY_SIZE = 64;
+	const int ARRAY_SIZE = 96;
 	const int ARRAY_BYTES = ARRAY_SIZE * sizeof(float);
 
 	// generate the input array on the host
